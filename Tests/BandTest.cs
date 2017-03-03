@@ -24,12 +24,36 @@ namespace BandTracker
             testBand.GetName();
             Band.GetAll()[0].GetName();
 
+            foreach(var band in Band.GetAll())
+            {
+                Console.WriteLine(band.GetName());
+                Console.WriteLine("hi");
+            }
+
             Assert.Equal(allBands, Band.GetAll());
+        }
+
+        [Fact]
+        public void TEST_AddVenueToBandRelationship()
+        {
+            Band testBand = new Band("Maday Parade");
+            testBand.Save();
+
+            Venue testVenue = new Venue("WAMU Theatre");
+            testVenue.Save();
+
+            testBand.AddVenue(testVenue);
+
+            List<Venue> venuesPlayed = new List<Venue>{testVenue};
+
+            Assert.Equal(venuesPlayed, testBand.GetVenues());
         }
 
         public void Dispose()
         {
             Band.DeleteAll();
+            Venue.DeleteAll();
+            Venue.DeleteRelationship();
         }
     }
 }

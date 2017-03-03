@@ -18,10 +18,8 @@ namespace BandTracker
         public void TEST_Save_SaveVenueToDB()
         {
             Venue testVenue = new Venue("El Corozon");
-            List<Venue> allVenues = new List<Venue>{testVenue};
             testVenue.Save();
-
-            testVenue.GetName();
+            List<Venue> allVenues = new List<Venue>{testVenue};
             Venue.GetAll()[0].GetName();
 
             Assert.Equal(allVenues, Venue.GetAll());
