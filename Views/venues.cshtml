@@ -17,7 +17,7 @@
         @foreach(var venue in Model)
         {
             <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>@venue.GetName()</div>
+                <div class="collapsible-header"><i class="material-icons">radio</i>@venue.GetName()</div>
                 <div class="collapsible-body">
                     <ul>
                         @foreach(var band in @venue.GetBands())

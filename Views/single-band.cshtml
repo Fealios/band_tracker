@@ -2,13 +2,14 @@
     Layout="Shared/_Layout.cshtml";
 }
 
-@Model.GetName();
+<h3> @Model.GetName() </h3>
 
-<ul>
+<h5> List of venues: </h5>
+<div class="collection">
     @foreach(var venue in Model.GetVenues())
     {
-        <li>@venue.GetName()</li>
+        <a href="@venue.GetId()" class="collection-item"><span class="badge"></span>@venue.GetName()</a>
     }
-</ul>
+ </div>
 
 <a class="btn-floating" href="/"><i class="material-icons">fast_rewind</i>button</a>

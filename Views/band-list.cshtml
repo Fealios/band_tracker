@@ -1,9 +1,14 @@
 @{
     Layout="Shared/_Layout.cshtml";
 }
-<ul>
+
+
+<h3> List of bands: </h3>
+<div class="collection">
     @foreach(var band in Model)
     {
-        <li><a href="/single-band/@band.GetId()">@band.GetName()</a></li>
+        <a href="/single-band/@band.GetId()" class="collection-item"><span class="badge"></span>@band.GetName()</a>
     }
-</ul>
+ </div>
+
+ <a class="btn-floating" href="/"><i class="material-icons">fast_rewind</i>button</a>
