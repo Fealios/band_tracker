@@ -1,0 +1,12 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+<h3> Are you sure you want to delete @Model.GetName() </h3>
+
+<div class="">
+    <form action="/delete-venue/@Model.GetId()" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="btn red" name="button">Yes</button><a href="/" class="btn green"> No </a>
+    </form>
+</div>

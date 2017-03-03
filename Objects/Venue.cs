@@ -190,6 +190,56 @@ namespace BandTracker.Objects
             }
         }
 
+        public void Update(string newName)
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("UPDATE venues SET name = @NewName OUTPUT INSERTED.name WHERE id = @VenueId;", conn);
+
+            SqlParameter name = new SqlParameter("@NewName", newName);
+            SqlParameter id = new SqlParameter("@VenueId", this.GetId());
+
+            cmd.Parameters.Add(name);
+            cmd.Parameters.Add(id);
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while(rdr.Read())
+            {
+                this._name = rdr.GetString(0);
+            }
+
+            if(rdr != null)
+            {
+                rdr.Close();
+            }
+            if(conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+        public void DeleteVenue()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("DELETE FROM venues WHERE id = @VenueId; DELETE FROM bands_venues WHERE venue_id = @VenueId;", conn);
+
+            SqlParameter venueId = new SqlParameter("@VenueId", this.GetId());
+
+
+            cmd.Parameters.Add(venueId);
+
+            cmd.ExecuteNonQuery();
+
+            if(conn != null)
+            {
+                conn.Close();
+            }
+        }
+
         public static void DeleteRelationship()
         {
             SqlConnection conn = DB.Connection();
