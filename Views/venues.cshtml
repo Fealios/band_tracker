@@ -19,6 +19,7 @@
             <li>
                 <div class="collapsible-header"><i class="material-icons">radio</i>@venue.GetName()</div>
                 <div class="collapsible-body">
+                    <h5><a href="/single-venue/@venue.GetId()">Check out this Venue! </a></h5>
                     <ul>
                         @foreach(var band in @venue.GetBands())
                         {

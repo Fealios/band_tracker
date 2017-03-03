@@ -118,6 +118,38 @@ namespace BandTracker.Objects
             return foundBand;
         }
 
+        // public static Band FindByName(string name)
+        // {
+        //     SqlConnection conn = DB.Connection();
+        //     conn.Open();
+        //
+        //     SqlCommand cmd = new SqlCommand("SELECT * FROM bands WHERE name = @BandName;", conn);
+        //     SqlParameter bandNameParameter = new SqlParameter("@BandName", id);
+        //     cmd.Parameters.Add(bandNameParameter);
+        //     SqlDataReader rdr = cmd.ExecuteReader();
+        //
+        //     int foundBandId = 0;
+        //     string foundBandName = null;
+        //
+        //     while (rdr.Read())
+        //     {
+        //         foundBandId = rdr.GetInt32(0);
+        //         foundBandName = rdr.GetString(1);
+        //     }
+        //     Band foundBand = new Band(foundBandName, foundBandId);
+        //
+        //     if (rdr != null)
+        //     {
+        //         rdr.Close();
+        //     }
+        //     if (conn != null)
+        //     {
+        //         conn.Close();
+        //     }
+        //     return foundBand;
+        // }
+
+
         public void AddVenue(Venue newVenue)
         {
             SqlConnection conn = DB.Connection();

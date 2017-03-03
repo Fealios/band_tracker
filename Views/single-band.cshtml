@@ -8,7 +8,7 @@
 <div class="collection">
     @foreach(var venue in Model.GetVenues())
     {
-        <a href="@venue.GetId()" class="collection-item"><span class="badge"></span>@venue.GetName()</a>
+        <a href="/single-venue/@venue.GetId()" class="collection-item"><span class="badge"></span>@venue.GetName()</a>
     }
  </div>
 

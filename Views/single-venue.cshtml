@@ -3,10 +3,21 @@
 }
 
 <ul>
-    @foreach(var band in Model.GetBands())
+    @foreach(var band in Model["venue"].GetBands())
     {
         <li><a href="/single-band/@band.GetId()">@band.GetName()</a></li>
     }
-
 </ul>
+
+<h5> Add Band to this Venue? </h5>
+<form action="/add-to-venue/@Model["venue"].GetId()" method="post">
+    <label>Band Name</label>
+    <select name="band-select">
+        @foreach(var band in Model["band"].GetAllBands())
+        {
+            <option value="@band.GetId()">@band.GetName()</option>
+        }
+    </select>
+    <button type="submit" class="btn-floating blue" name="button"><i class="material-icons">add</i></button>
+</form>
 <a class="btn-floating" href="/"><i class="material-icons">fast_rewind</i>button</a>
