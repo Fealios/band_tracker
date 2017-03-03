@@ -15,15 +15,6 @@ namespace BandTracker
         }
 
         [Fact]
-        public void someBullshit()
-        {
-            int num1 = 1;
-            int num2 = 1;
-
-            Assert.Equal(num1, num2);
-        }
-
-        [Fact]
         public void TEST_Save_SaveVenueToDB()
         {
             Venue testVenue = new Venue("El Corozon");
