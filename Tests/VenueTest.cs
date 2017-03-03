@@ -7,11 +7,33 @@ using BandTracker.Objects;
 
 namespace BandTracker
 {
-    public class BookTest : IDisposable
+    public class VenueTest : IDisposable
     {
-        public BookTest()
+        public VenueTest()
         {
             DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=band_tracker_test;Integrated Security=SSPI;";
+        }
+
+        [Fact]
+        public void someBullshit()
+        {
+            int num1 = 1;
+            int num2 = 1;
+
+            Assert.Equal(num1, num2);
+        }
+
+        [Fact]
+        public void TEST_Save_SaveVenueToDB()
+        {
+            Venue testVenue = new Venue("El Corozon");
+            List<Venue> allVenues = new List<Venue>{testVenue};
+            testVenue.Save();
+
+            testVenue.GetName();
+            Venue.GetAll()[0].GetName();
+
+            Assert.Equal(allVenues, Venue.GetAll());
         }
 
         public void Dispose()
