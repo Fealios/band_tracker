@@ -27,6 +27,20 @@ namespace BandTracker
             Assert.Equal(allVenues, Venue.GetAll());
         }
 
+        [Fact]
+        public void TEST_AddBandToVenueRelationship()
+        {
+            Venue testVenue = new Venue("El Corozon");
+            testVenue.Save();
+            Band testBand = new Band("Mayday Parade");
+            testBand.Save();
+
+            testVenue.AddBand(testBand);
+            List<Band> bandsAtVenue = new List<Band> {testBand};
+
+            Assert.Equal(bandsAtVenue, testVenue.GetBands());
+        }
+
         public void Dispose()
         {
             Venue.DeleteAll();
