@@ -1,0 +1,14 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+@Model.GetName();
+
+<ul>
+    @foreach(var venue in Model.GetVenues())
+    {
+        <li>@venue.GetName()</li>
+    }
+</ul>
+
+<a class="btn-floating" href="/"><i class="material-icons">fast_rewind</i>button</a>

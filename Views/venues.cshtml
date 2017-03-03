@@ -1,0 +1,50 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="http://ppcorn.com/us/wp-content/uploads/sites/14/2015/12/Jimi-Hendrix-pop-art-ppcorn.jpg" alt="Jimi Hendrix">
+    </div>
+
+</div>
+
+<div class="section">
+    <h3> Venues: </h3>
+    <ul class="collapsible" data-collapsible="accordion">
+        @foreach(var venue in Model)
+        {
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>@venue.GetName()</div>
+                <div class="collapsible-body">
+                    <ul>
+                        @foreach(var band in @venue.GetBands())
+                        {
+                            <li><a href="/single-band/@band.GetId()">@band.GetName()</a></li>
+                        }
+                    </ul>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="http://www.wallpaperup.com/uploads/wallpapers/2013/03/05/48235/big_thumb_ca1ed0d59d30c4ae839d1859e8f0d7eb.jpg" alt="Led Zeppelin">
+    </div>
+</div>
+
+<div class="section">
+    <h3> Set your own Venue: </h3>
+    <form action="/" method="post">
+        <label>Venue Name:</label>
+        <input type="text" name="venue-name">
+        <br>
+
+
+        <button type="submit" class="btn-floating green"><i class="material-icons">add</i></button>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+<ul>
+    @foreach(var band in Model.GetBands())
+    {
+        <li><a href="/single-band/@band.GetId()">@band.GetName()</a></li>
+    }
+
+</ul>
+<a class="btn-floating" href="/"><i class="material-icons">fast_rewind</i>button</a>

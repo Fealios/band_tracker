@@ -87,6 +87,37 @@ namespace BandTracker.Objects
             return allBands;
         }
 
+        public static Band Find(int id)
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM bands WHERE id = @BandId;", conn);
+            SqlParameter bandIdParameter = new SqlParameter("@BandId", id);
+            cmd.Parameters.Add(bandIdParameter);
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            int foundBandId = 0;
+            string foundBandName = null;
+
+            while (rdr.Read())
+            {
+                foundBandId = rdr.GetInt32(0);
+                foundBandName = rdr.GetString(1);
+            }
+            Band foundBand = new Band(foundBandName, foundBandId);
+
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+            if (conn != null)
+            {
+                conn.Close();
+            }
+            return foundBand;
+        }
+
         public void AddVenue(Venue newVenue)
         {
             SqlConnection conn = DB.Connection();
@@ -114,8 +145,6 @@ namespace BandTracker.Objects
             conn.Open();
 
             SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN bands_venues ON (bands_venues.band_id = bands.id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id = @BandId;", conn);
-            // SqlCommand cmd = new SqlCommand("SELECT bands.* FROM venues JOIN bands_venues ON (bands_venues.venue_id = venues.id) JOIN bands ON (bands_venues.band_id = bands.id) WHERE venues.id = @VenueId;", conn);
-
 
             SqlParameter bandId = new SqlParameter("@BandId", this.GetId());
 

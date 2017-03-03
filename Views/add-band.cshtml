@@ -1,0 +1,22 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="form-holder col md3">
+        <form action="/add-band" method="post">
+            <label>Band Name</label>
+            <input type="text" name="band-name">
+            <br>
+            <label>Venue:</label>
+            <select name="venue-select">
+                @foreach(var venue in Model){
+                    <option value="@venue.GetId()">@venue.GetName()</option>
+
+                }
+            </select>
+            <button type="submit" name="button">Submit</button>
+        </div>
+
+</div>
+<a class="btn-floating" href="/"><i class="material-icons">fast_rewind</i>button</a>

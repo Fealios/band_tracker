@@ -1,0 +1,9 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+<ul>
+    @foreach(var band in Model)
+    {
+        <li><a href="/single-band/@band.GetId()">@band.GetName()</a></li>
+    }
+</ul>

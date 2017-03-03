@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/styles.css">
+
+    <meta charset="utf-8">
+    <title>Bands</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Band Checker</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/band-list">Band List</a></li>
+                <li><a href="/add-band">Add Band</a></li>
+                <li><a href="/">Venue List</a></li>
+            </ul>
+        </nav>
+        @RenderBody()
+        <script>
+        $('select').material_select();
+        $('.parallax').parallax();
+        </script>
+    </body>
+    </html>
